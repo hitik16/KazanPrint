@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kazan Print — 3D-печать на заказ</title>
+<style>
+:root{--bg:#f6faf7;--card:#fff;--text:#14201a;--muted:#5f6d66;--line:#dfe9e3;--accent:#0d8a5f;--on-accent:#fff;--tg:#229ed9;--av:#0af;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1412;--card:#161c19;--text:#eef4f0;--muted:#93a39a;--line:#25302b;--accent:#34d399;--on-accent:#06281c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1412;--card:#161c19;--text:#eef4f0;--muted:#93a39a;--line:#25302b;--accent:#34d399;--on-accent:#06281c;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 12px;padding:22px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;font-size:18px}.logo img{border-radius:9px;display:block}
+nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:14px}
+nav a:hover{color:var(--accent)}
+.hero{padding:56px 0 40px}
+h1{font-size:clamp(32px,6vw,52px);line-height:1.1;letter-spacing:-.03em;margin:0 0 16px;max-width:14em}
+.lead{color:var(--muted);max-width:34em;margin:0 0 28px;font-size:18px}
+.btn{display:inline-block;padding:11px 18px;border-radius:10px;border:1px solid var(--line);color:var(--text);text-decoration:none;font-size:15px;font-weight:600;background:var(--card);transition:.15s}
+.btn:hover{border-color:var(--accent)}
+.btn.main{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn.tg{background:transparent;border-color:var(--accent);color:var(--accent)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+section{padding:40px 0;border-top:1px solid var(--line)}
+h2{font-size:22px;letter-spacing:-.02em;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.pic{aspect-ratio:1/1;overflow:hidden;display:grid;place-items:center;font-size:54px;background:var(--bg);border-bottom:1px solid var(--line)}
+.info{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.name{font-weight:600;flex:1}.pic img{width:100%;height:100%;object-fit:cover;display:block}.old{color:var(--muted);font-weight:400;font-size:14px;margin-left:8px}
+.desc{color:var(--muted);font-size:14px;flex:1}
+.price{font-weight:700;margin:6px 0 10px}
+.card .row .btn{flex:1;text-align:center;padding:9px 10px;font-size:14px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:14px 16px}
+.chip b{display:block;margin-bottom:2px}
+.chip span{color:var(--muted);font-size:14px}
+.steps{counter-reset:s;display:grid;gap:12px;padding:0;list-style:none;margin:0}
+.steps li{counter-increment:s;padding-left:40px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-size:13px;font-weight:700}
+.note{color:var(--muted);font-size:14px;margin-top:14px}.note a{color:var(--accent)}
+footer{padding:32px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><img src="data:image/jpeg;base64,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" alt="" width="40" height="40">Kazan Print</div>
+    <nav><a href="#catalog">Каталог</a><a href="#delivery">Доставка</a><a href="#order">Как заказать</a><a href="https://t.me/kazanprint" target="_blank" rel="noopener">Телеграм Канал</a></nav>
+  </header>
+
+  <div class="hero">
+    <h1>Изделия, напечатанные на 3D Принтере, и 3D печать</h1>
+    <p class="lead">Готовые вещи, моделирование и печать по вашей модели. Заказ — через Авито с доставкой или напрямую в Telegram.</p>
+    <div class="row">
+      <a class="btn main" data-avito href="#" target="_blank" rel="noopener">Смотреть на Авито</a>
+      <a class="btn tg" data-tg href="#" target="_blank" rel="noopener">Написать в Telegram</a>
+      <a class="btn" href="https://t.me/kazanprint" target="_blank" rel="noopener">Наш Telegram-канал</a>
+    </div>
+  </div>
+
+  <section id="catalog">
+    <h2>Каталог</h2>
+    <div class="grid" id="grid"></div>
+    <p class="note">Не нашли нужное? Пришлите модель или идею — посчитаю и напечатаю.</p>
+    <a class="btn tg" data-tgmsg="Здравствуйте! Хочу, чтобы вы напечатали мою модель или модель с определённого сайта. Ссылка или файл модели: " href="#" target="_blank" rel="noopener" style="margin-top:14px">Заказать печать своей модели</a>
+  </section>
+  <section id="order">
+    <h2>Как заказать</h2>
+    <ol class="steps">
+      <li><b>Выберите изделие</b> и нажмите «Авито» или «Telegram».</li>
+      <li><b>На Авито</b> — оформите заказ с доставкой в пару кликов. <b>В Telegram</b> — сообщение уже заполнено, останется отправить.</li>
+      <li><b>Печатаю и отправляю</b> — обычно в течение 1–3 дней.</li>
+    </ol>
+  </section>
+
+  <section id="delivery">
+    <h2>Доставка</h2>
+    <div class="cols">
+      <div class="chip"><b>В пункт выдачи</b></div>
+      <div class="chip"><b>Курьером</b></div>
+      <div class="chip"><b>Самовывоз</b></div>
+    </div>
+    <p class="note">Все отзывы покупателей — <a data-avito href="#" target="_blank" rel="noopener">в моём профиле на Авито</a>.</p>
+  </section>
+
+  <footer>
+    <div class="row" style="margin-bottom:10px">
+      <a class="btn" data-avito href="#" target="_blank" rel="noopener">Авито</a>
+      <a class="btn" data-tg href="#" target="_blank" rel="noopener">Telegram</a>
+    </div>
+    © Kazan Print · Печать из PLA, PETG и других материалов
+  </footer>
+</div>
+
+<script>
+/* ===== НАСТРОЙКИ: поменяйте под себя ===== */
+var TG_USERNAME = "asgathus"; // ваш ник в Telegram без @
+var AVITO_URL = "https://www.avito.ru/user/cd1f4c3a5a3765e7a6176350718d4ec5/profile?src=sharing";
+var PRODUCTS = [
+  {icon:"🟩", name:"Кейкап «Крипер» для механической клавиатуры", price:"40 ₽", old:"", img:"", url:""},
+  {icon:"🧱", name:"Панели для IKEA Skadis", price:"360 ₽", old:"400 ₽", img:"", url:""},
+  {icon:"🤖", name:"Горшок «Робот» для цветов", price:"270 ₽", old:"300 ₽", img:"", url:""},
+  {icon:"🏮", name:"Фонарь-ночник Minecraft", price:"350 ₽", old:"", img:"", url:""},
+  {icon:"📱", name:"Подставка для телефона", price:"246 ₽", old:"300 ₽", img:"", url:""},
+  {icon:"🗡️", name:"Скрытые клинки, 3D-печать", price:"348 ₽", old:"", img:"", url:""},
+  {icon:"🥊", name:"Наматыватель боксёрских бинтов", price:"189 ₽", old:"", img:"", url:""},
+  {icon:"🪴", name:"Горшок для цветов", price:"250 ₽", old:"", img:"", url:""},
+  {icon:"🎮", name:"Объёмный логотип GTA 6", price:"270 ₽", old:"", img:"", url:""},
+  {icon:"🎧", name:"Подставка для наушников, 21 см", price:"300 ₽", old:"", img:"", url:""},
+  {icon:"🏷️", name:"NFC-брелок на заказ", price:"50 ₽", old:"", img:"", url:""},
+  {icon:"💡", name:"Ночник Minecraft «Руда»", price:"350 ₽", old:"", img:"", url:""}
+];
+/* url — ссылка на объявление Авито (если пусто, откроется ваш профиль); img — фото; old — старая цена */
+/* ======================================== */
+
+function tgLink(text){return "https://t.me/"+TG_USERNAME+(text?"?text="+encodeURIComponent(text):"")}
+document.querySelectorAll("[data-avito]").forEach(function(a){a.href=AVITO_URL});
+document.querySelectorAll("[data-tg]").forEach(function(a){a.href=tgLink("Здравствуйте! Хочу заказать печать на 3D-принтере.")});
+document.querySelectorAll("[data-tgmsg]").forEach(function(a){a.href=tgLink(a.getAttribute("data-tgmsg"))});
+
+var grid=document.getElementById("grid");
+PRODUCTS.forEach(function(p){
+  var d=document.createElement("div");d.className="card";
+  var pic=document.createElement("div");pic.className="pic";
+  if(p.img){var im=document.createElement("img");im.src=p.img;im.alt=p.name;im.loading="lazy";pic.appendChild(im)}else{pic.textContent=p.icon}
+  var info=document.createElement("div");info.className="info";
+  var n=document.createElement("div");n.className="name";n.textContent=p.name;
+  var pr=document.createElement("div");pr.className="price";pr.textContent=p.price;
+  if(p.old){var o=document.createElement("s");o.className="old";o.textContent=p.old;pr.appendChild(o)}
+  var row=document.createElement("div");row.className="row";
+  var a=document.createElement("a");a.className="btn main";a.textContent="Купить на Авито";a.href=p.url||AVITO_URL;a.target="_blank";a.rel="noopener";
+  row.appendChild(a);
+  info.appendChild(n);info.appendChild(pr);info.appendChild(row);
+  d.appendChild(pic);d.appendChild(info);grid.appendChild(d);
+});
+</script>
+</body>
+</html>
